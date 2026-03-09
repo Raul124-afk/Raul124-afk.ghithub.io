@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Laborator 2 - Proiect Web</title>
+</head>
+<body bgcolor="#f0f0f0">
+
+    <center>
+        <h1>Proiect: GameVault - Arhiva Gamerilor</h1>
+        <img src="https://via.placeholder.com/150" alt="Logo GameVault" width="150" height="150" title="Logo-ul aplicației noastre">
+    </center>
+
+    <div align="center">
+        <p>Această pagină descrie viziunea pentru aplicația <strong>GameVault</strong>, un spațiu dedicat <b>pasionaților de gaming</b>. 
+        <br> Utilizatorii pot explora o bază de date vastă și pot contribui cu propriile experiențe.</p>
+    </div>
+
+    <hr>
+
+    <h2>Funcționalități Principale</h2>
+    <ul>
+        <li>Sistem de rating integrat</li>
+        <li>Comunitate activă</li>
+        <li>Filtrare avansată</li>
+    </ul>
+
+    <h3>Etape de Dezvoltare</h3>
+    <ol>
+        <li>Proiectarea bazei de date</li>
+        <li>Implementarea interfeței (Frontend)</li>
+        <li>Logica de business (Backend)</li>
+    </ol>
+
+    <table border="1" width="80%" align="center" bgcolor="#ffffff">
+        <caption><h3>Planificare Module</h3></caption>
+        <tr bgcolor="#cccccc">
+            <th>Modul</th>
+            <th colspan="2">Detalii și Stare</th>
+        </tr>
+        <tr>
+            <td align="center" valign="middle">Autentificare</td>
+            <td>Interfață Login/Register</td>
+            <td width="100">Finalizat</td>
+        </tr>
+        <tr>
+            <td align="center">Catalog Jocuri</td>
+            <td>Afișare dinamică prin <span>API extern</span></td>
+            <td>În lucru</td>
+        </tr>
+    </table>
+
+    <br>
+
+    <center>
+        <fieldset>
+            <legend>Adaugă o Recenzie Nouă</legend>
+            <form name="recenzieForm">
+                <p>
+                    <label>Nume Joc:</label>
+                    <input type="text" name="joc_nume" value="The Witcher 3" readonly size="30">
+                </p>
+
+                <p>
+                    <label>Gen Joc:</label>
+                    <select name="gen_joc" multiple>
+                        <option value="rpg" selected>RPG</option>
+                        <option value="action">Action</option>
+                        <option value="strategy">Strategy</option>
+                        <option value="sports" disabled>Sports (Indisponibil)</option>
+                    </select>
+                </p>
+
+                <p>
+                    <label>Rating (1-10):</label>
+                    <input type="number" name="rating" min="1" max="10" step="0.5" value="9">
+                </p>
+
+                <p>
+                    <label>Recomanzi acest joc?</label>
+                    <input type="checkbox" name="recomand" checked> Da
+                </p>
+
+                <p>
+                    <label>Platformă preferată:</label>
+                    <input type="radio" name="platforma" value="pc" checked> PC
+                    <input type="radio" name="platforma" value="consola"> Consolă
+                </p>
+
+                <p>
+                    <label>Comentariul tău:</label><br>
+                    <textarea name="comentariu" rows="5" cols="40" maxlength="200">Scrie aici impresiile tale...</textarea>
+                </p>
+
+                <input type="submit" value="Trimite Recenzia">
+            </form>
+        </fieldset>
+    </center>
+
+    <div style="margin-top: 20px;">
+        <h4>Link-uri Utile:</h4>
+        <a href="https://github.com" target="_blank" title="Vizitează profilul meu">Spre Contul de GitHub</a>
+    </div>
+
+</body>
+</html>
