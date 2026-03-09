@@ -2,51 +2,44 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>Laborator 2 - Proiect Web</title>
+    <title>Descriere Proiect - AutoVault Dealership</title>
 </head>
-<body bgcolor="#f0f0f0">
+<body bgcolor="#f4f4f4">
 
     <center>
-        <h1>Proiect: GameVault - Arhiva Gamerilor</h1>
-        <img src="https://via.placeholder.com/150" alt="Logo GameVault" width="150" height="150" title="Logo-ul aplicației noastre">
+        <h1>Aplicația Web: AutoVault Management</h1>
+        <img src="https://via.placeholder.com/200x100" alt="Logo AutoVault" title="Platformă Dealer Auto" width="200" height="100">
     </center>
 
     <div align="center">
-        <p>Această pagină descrie viziunea pentru aplicația <strong>GameVault</strong>, un spațiu dedicat <b>pasionaților de gaming</b>. 
-        <br> Utilizatorii pot explora o bază de date vastă și pot contribui cu propriile experiențe.</p>
+        <p>Proiectul meu constă în realizarea unei platforme de <strong>gestiune pentru un dealership auto</strong>. 
+        Scopul este de a facilita legătura dintre <b>vânzători și cumpărători</b> prin transparență totală.
+        <br> Documentația completă este disponibilă pe <a href="https://github.com" target="_blank" name="link_proiect">GitHub</a>.
+        <span title="Versiune"> (v1.0 Beta)</span></p>
     </div>
 
     <hr>
 
-    <h2>Funcționalități Principale</h2>
+    <h3>Funcționalități principale:</h3>
     <ul>
-        <li>Sistem de rating integrat</li>
-        <li>Comunitate activă</li>
-        <li>Filtrare avansată</li>
+        <li>Filtrare avansată după marcă, model și preț.</li>
+        <li>Sistem de programare pentru Test-Drive.</li>
     </ul>
 
-    <h3>Etape de Dezvoltare</h3>
+    <h4>Pașii de implementare:</h4>
     <ol>
-        <li>Proiectarea bazei de date</li>
-        <li>Implementarea interfeței (Frontend)</li>
-        <li>Logica de business (Backend)</li>
+        <li>Definirea bazei de date pentru mașini.</li>
+        <li>Crearea panoului de administrare.</li>
     </ol>
 
-    <table border="1" width="80%" align="center" bgcolor="#ffffff">
-        <caption><h3>Planificare Module</h3></caption>
-        <tr bgcolor="#cccccc">
-            <th>Modul</th>
-            <th colspan="2">Detalii și Stare</th>
+    <table border="1" width="90%" bgcolor="#ffffff" align="center">
+        <tr>
+            <th colspan="3" valign="bottom" bgcolor="#dddddd">Categorii de Vehicule Disponibile</th>
         </tr>
         <tr>
-            <td align="center" valign="middle">Autentificare</td>
-            <td>Interfață Login/Register</td>
-            <td width="100">Finalizat</td>
-        </tr>
-        <tr>
-            <td align="center">Catalog Jocuri</td>
-            <td>Afișare dinamică prin <span>API extern</span></td>
-            <td>În lucru</td>
+            <td align="center"><b>SUV</b></td>
+            <td align="center"><b>Sedan</b></td>
+            <td align="center"><b>Electrice</b></td>
         </tr>
     </table>
 
@@ -54,53 +47,50 @@
 
     <center>
         <fieldset>
-            <legend>Adaugă o Recenzie Nouă</legend>
-            <form name="recenzieForm">
+            <legend>Configurator și Interes Client</legend>
+            <form name="dealerForm">
                 <p>
-                    <label>Nume Joc:</label>
-                    <input type="text" name="joc_nume" value="The Witcher 3" readonly size="30">
+                    Cod Dealer (ID): 
+                    <input type="text" name="dealer_id" value="AV-2024" size="10" maxlength="7" readonly>
                 </p>
 
                 <p>
-                    <label>Gen Joc:</label>
-                    <select name="gen_joc" multiple>
-                        <option value="rpg" selected>RPG</option>
-                        <option value="action">Action</option>
-                        <option value="strategy">Strategy</option>
-                        <option value="sports" disabled>Sports (Indisponibil)</option>
+                    Sunteți interesat de finanțare? 
+                    <input type="checkbox" name="credit" checked>
+                    <input type="radio" name="stare" value="nou" checked> Mașină Nouă
+                    <input type="radio" name="stare" value="rulate" disabled> Rulate (Stoc epuizat)
+                </p>
+
+                <p>
+                    Buget estimat (mii EUR): 
+                    <input type="number" name="buget" step="0.5" min="5" max="200" value="25">
+                </p>
+
+                <p>
+                    Alegeți mărcile preferate:
+                    <select name="marci" multiple>
+                        <option value="bmw" selected>BMW</option>
+                        <option value="audi">Audi</option>
+                        <option value="tesla" selected>Tesla</option>
+                        <option value="dacia">Dacia</option>
                     </select>
                 </p>
 
                 <p>
-                    <label>Rating (1-10):</label>
-                    <input type="number" name="rating" min="1" max="10" step="0.5" value="9">
+                    Descrieți dotările dorite: <br>
+                    <textarea name="dotari" rows="4" cols="45">Ex: Scaune încălzite, trapă, piele...</textarea>
                 </p>
 
-                <p>
-                    <label>Recomanzi acest joc?</label>
-                    <input type="checkbox" name="recomand" checked> Da
-                </p>
-
-                <p>
-                    <label>Platformă preferată:</label>
-                    <input type="radio" name="platforma" value="pc" checked> PC
-                    <input type="radio" name="platforma" value="consola"> Consolă
-                </p>
-
-                <p>
-                    <label>Comentariul tău:</label><br>
-                    <textarea name="comentariu" rows="5" cols="40" maxlength="200">Scrie aici impresiile tale...</textarea>
-                </p>
-
-                <input type="submit" value="Trimite Recenzia">
+                <input type="hidden" name="meta" t="car_dealer" star="premium">
+                
+                <input type="submit" value="Trimite Solicitarea">
             </form>
         </fieldset>
     </center>
 
-    <div style="margin-top: 20px;">
-        <h4>Link-uri Utile:</h4>
-        <a href="https://github.com" target="_blank" title="Vizitează profilul meu">Spre Contul de GitHub</a>
-    </div>
+    <br>
+    <h5>Contact Service: 0722 000 000</h5>
+    <h6>Creat pentru Laborator Tehnologii Web - 2024</h6>
 
 </body>
 </html>
