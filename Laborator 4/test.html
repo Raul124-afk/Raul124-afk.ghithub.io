@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Laborator 4 - Gestiune Stoc</title>
+</head>
+<body style="background-color: #f4f7f6; font-family: 'Segoe UI', sans-serif; padding: 20px;">
+
+    <header>
+        <div align="center">
+            <h1>🛒 Manager Listă Cumpărături</h1>
+            <h2>Controlul inventarului în timp real</h2>
+            <p>
+                Utilizați secțiunile de mai jos pentru <strong>administrarea produselor</strong>. 
+                <b>Atenție:</b> Modificările sunt salvate doar local în această sesiune.
+            </p>
+            <img src="https://cdn-icons-png.flaticon.com/128/1170/1170678.png" 
+                 alt="Imagine Coș" width="100" height="100" title="Logo Aplicație">
+        </div>
+    </header>
+
+    <hr>
+
+    <section>
+        <form id="produsNouForm">
+            <fieldset style="background-color: #ffffff; border: 2px solid #2c3e50;">
+                <legend><strong>Introducere Date Produs</strong></legend>
+                
+                <label>Nume Articol:</label> 
+                <input type="text" name="nume" id="form_nume" maxlength="45" size="25" value="Produs Standard">
+                <br><br>
+
+                <label>Cantitate:</label>
+                <input type="number" name="stoc" id="form_cant" max="500" step="0.5">
+                <br><br>
+
+                <label>Categorie (Select Multiple):</label><br>
+                <select name="cat" id="form_cat" multiple size="4">
+                    <option value="Alimentare" selected>Produse Alimentare</option>
+                    <option value="Băuturi">Băuturi Răcoritoare</option>
+                    <option value="Igienă">Produse Igienă</option>
+                    <option value="Electro">Electrocasnice</option>
+                </select>
+                <br><br>
+
+                <label>Proprietăți:</label>
+                <input type="checkbox" name="urgent" checked> Livrare Urgentă
+                <input type="checkbox" name="extern" disabled> Furnizor Extern
+                <br><br>
+
+                <label>Note Interne:</label><br>
+                <textarea id="form_obs" cols="35" rows="3" readonly>Notă: Document generat automat de sistem.</textarea>
+                <br><br>
+
+                <button type="submit">Adaugă Produs</button>
+                <button type="reset">Resetează Câmpuri</button>
+            </fieldset>
+        </form>
+    </section>
+
+    <br>
+
+    <table border="3" width="90%" bgcolor="#e8ecef" align="center">
+        <tr bgcolor="#34495e" style="color: white;">
+            <th>Denumire</th>
+            <th>Departament</th>
+            <th>Stoc</th>
+            <th>Preț (RON)</th>
+        </tr>
+        <tr align="center" valign="middle">
+            <td>Mere Ionatan</td>
+            <td>Fructe</td>
+            <td>10</td>
+            <td>4.50</td>
+        </tr>
+        <tr align="center" valign="middle">
+            <td>Lapte 1L</td>
+            <td>Lactate</td>
+            <td>5</td>
+            <td>7.20</td>
+        </tr>
+        <tr align="center" valign="middle">
+            <td>Detergent</td>
+            <td>Curățenie</td>
+            <td>2</td>
+            <td>25.00</td>
+        </tr>
+        <tr>
+            <td colspan="4" align="center" bgcolor="#bdc3c7">
+                <b>Total General Articole în Tabel: 3 rânduri active</b>
+            </td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <div height="180" style="padding: 10px;">
+        <center>
+            <span><h3>Ghid și Navigare</h3></span>
+        </center>
+        
+        <ol start="1">
+            <li>Verificați disponibilitatea în depozit.</li>
+            <li>Completați formularul de mai sus.</li>
+        </ol>
+
+        <ul>
+            <li>Fructe & Legume</li>
+            <li>Produse neperisabile</li>
+        </ul>
+
+        <nav>
+            <a href="https://www.google.ro" name="link_extern" target="_blank">Caută prețuri pieței</a> | 
+            <a href="#produsNouForm" name="link_intern">Înapoi la formular</a>
+        </nav>
+        <br>
+    </div>
+
+    <script>
+        // --- 2a. Variabile ---
+        var magazinNume = "SuperMarket Alpha";
+        let totalProduse = 120;
+        const versiuneSoft = "1.2.0-STABLE";
+
+        alert("Sistem pornit: " + magazinNume);
+        console.log("Versiune aplicație: " + versiuneSoft);
+        document.write("<center><p>Logat în: <strong>" + totalProduse + "</strong> produse disponibile.</p></center>");
+
+        // --- 2b & 2c. Funcții ---
+        function calculeazaTotal(pret, cantitate) {
+            return pret * cantitate;
+        }
+
+        const aplicaDiscount = function(total, procent) {
+            return total - (total * (procent / 100));
+        };
+
+        const formatPret = (suma) => suma.toFixed(2) + " RON";
+
+        // Apelare și afișare finală
+        let valoareBruta = calculeazaTotal(25.5, 3);
+        let valoareCuReducere = aplicaDiscount(valoareBruta, 10);
+        console.log("Rezultat Ex 2c (Formatat): " + formatPret(valoareCuReducere));
+
+        // --- 3a. Array de produse ---
+        let produse = [
+            { nume: "Pâine", pret: 5, cantitate: 2, categorie: "Panificație" },
+            { nume: "Apă", pret: 3, cantitate: 10, categorie: "Băuturi" },
+            { nume: "Ouă", pret: 1.2, cantitate: 30, categorie: "Lactate" },
+            { nume: "Săpun", pret: 4, cantitate: 5, categorie: "Igienă" },
+            { nume: "Zahăr", pret: 6, cantitate: 3, categorie: "Băcănie" }
+        ];
+
+        console.log("--- Inventar Produse ---");
+        produse.forEach(p => console.log(p.nume + " - Categorie: " + p.categorie));
+
+        let arrayTotaluri = produse.map(p => p.pret * p.cantitate);
+        console.log("Array totaluri (Pret x Cantitate):", arrayTotaluri);
+
+        // --- 3b & 3c. Obiect magazin ---
+        var magazin = {
+            nume: "Alpha Store",
+            adresa: "Str. Principală Nr. 1",
+            produse: produse,
+            afiseazaProduse: function() {
+                console.log("Produse disponibile în " + this.nume + ":");
+                this.produse.forEach(p => console.log("- " + p.nume));
+            },
+            calculeazaValoareTotala: function() {
+                return this.produse.reduce((acc, p) => acc + (p.pret * p.cantitate), 0);
+            },
+            gasesteProdus: function(numeProdus) {
+                return this.produse.find(p => p.nume.toLowerCase() === numeProdus.toLowerCase());
+            }
+        };
+
+        magazin.afiseazaProduse();
+        document.write("<center>Valoare totală stoc magazin: " + formatPret(magazin.calculeazaValoareTotala()) + "</center>");
+
+        let cautaExistent = magazin.gasesteProdus("Pâine");
+        if(cautaExistent) console.log("Produs găsit:", cautaExistent);
+
+        let cautaInexistent = magazin.gasesteProdus("Cireșe");
+        if(!cautaInexistent) console.log("Produsul căutat nu există în stocul Alpha Store.");
+
+        // --- 4. Interacțiune Formular ---
+        document.getElementById('produsNouForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // 4a. Prevenire trimitere
+
+            // Citire date folosind document.forms[0].elements
+            let elements = document.forms[0].elements;
+            let valNume = elements['nume'].value;
+            let valCant = parseFloat(elements['stoc'].value);
+            let valCat = elements['cat'].value;
+
+            // 4b. Validare
+            if (valNume === "" || valNume === "Produs Standard") {
+                alert("Eroare: Vă rugăm să introduceți un nume valid!");
+                return;
+            }
+            if (isNaN(valCant) || valCant <= 0) {
+                alert("Eroare: Cantitatea trebuie să fie un număr pozitiv!");
+                return;
+            }
+
+            // Salvare și confirmare
+            let produsNou = {
+                nume: valNume,
+                pret: 0, 
+                cantitate: valCant,
+                categorie: valCat
+            };
+
+            produse.push(produsNou);
+            console.log("Obiect nou creat din formular:", produsNou);
+            console.log("Confirmare: Produsul a fost adăugat în array-ul principal.");
+        });
+    </script>
+</body>
+</html>
